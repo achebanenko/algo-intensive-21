@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function rightParenthesis(s) {
+            const set = new Set('(){}[]'.split(''))
+            
+            const obj = {
+                ')': '(',
+                '}': '{',
+                ']': '['
+            }
+
+            const stack = []
+            for(const val of s) {
+                if(!set.has(val)) {
+                    continue
+                }
+
+                if(!obj[val]) {
+                    stack.push(val)
+                } else {
+                    if(obj[val] !== stack.pop()) {
+                        return false
+                    }
+                }
+            }
+
+            return !stack.length
+        }
+
+        // true
+        console.log(rightParenthesis(''))
+        console.log(rightParenthesis('()[]{}'))
+        console.log(rightParenthesis('((()))[]{{[]}}'))
+        console.log(rightParenthesis('(0)2[11]52{9}'))
+        console.log(rightParenthesis('(_(@(abc)782))[477]{0_{[23]}56-%}'))
+
+        // false
+        console.log(rightParenthesis('()[[]]{)}'))
+        console.log(rightParenthesis('a(_)67[_[&%]]{_)10}*'))
+    </script>
+</body>
+</html>
