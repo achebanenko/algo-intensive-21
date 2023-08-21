@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function selectionSort(arr) {
+            let start = 0
+            while(start < arr.length) {
+                let minIndex = start
+                for (let i = start; i < arr.length; i++) {
+                    if(arr[i] < arr[minIndex]) {
+                        minIndex = i
+                    }
+                }
+
+                [arr[start], arr[minIndex]] = [arr[minIndex], arr[start]]
+                
+                start++
+            }
+
+            return arr
+        }
+
+        console.log(selectionSort([3,7,1,9,2,4,6,5,8,0]))
+    </script>
+</body>
+</html>
