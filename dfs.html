@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function TreeNode(val = 0, left = null, right = null) {
+            this.val = val
+            this.left = left
+            this.right = right
+        }
+
+        //                0
+        //          3            8
+        //       2     5       6     10
+        //     1   4         7     9    11
+
+        const root = new TreeNode()
+        const a = new TreeNode(3)
+        const b = new TreeNode(8)
+        const c = new TreeNode(2)
+        const d = new TreeNode(5)
+        const e = new TreeNode(6)
+        const f = new TreeNode(10)
+        root.left = a
+        root.right = b
+        a.left = c
+        a.right = d
+        b.left = e
+        b.right = f
+        c.left = new TreeNode(1)
+        c.right = new TreeNode(4)
+        e.left = new TreeNode(7)
+        f.left = new TreeNode(9)
+        f.right = new TreeNode(11)
+
+        console.log(root)
+
+        
+        function dfs(node) {
+            if(!node) {
+                return
+            }
+
+            console.log(node.val)
+            dfs(node.left)
+            dfs(node.right)
+        }
+
+        console.log(dfs(root))
+    </script>
+</body>
+</html>
